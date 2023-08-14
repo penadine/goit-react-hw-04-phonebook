@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Phonebook.module.css';
 
-class ContactForm extends Component {
+class ContactForm extends React.Component {
   state = {
     name: '',
     number: '',
