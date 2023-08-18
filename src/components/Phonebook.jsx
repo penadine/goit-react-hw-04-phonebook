@@ -16,6 +16,20 @@ class Phonebook extends React.Component {
     filter: ''
   };
 
+   componentDidMount() {
+    const persistedContacts = localStorage.getItem('contacts');
+
+    if (persistedContacts) {
+      this.setState({ contacts: JSON.parse(persistedContacts) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   addContact = ({ name, number }) => {
     const contact = {
       id: nanoid(),
@@ -68,6 +82,5 @@ class Phonebook extends React.Component {
     );
   }
 }
-
 
 export default Phonebook;
